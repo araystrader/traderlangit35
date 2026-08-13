@@ -971,12 +971,10 @@ async function init() {
 
   setInterval(renderClock, 1000);
   setInterval(() => { renderCalendar(); if (S.tab === 'fund') renderPanels(); }, 1000);
-  // Interval polling dioptimalkan untuk hosting gratis (hemat kuota).
-  // Harga masih terasa realtime (ticker 10 dtk), tapi konsumsi request jauh lebih kecil.
-  setInterval(loadTickers, 10000);   // harga live tiap 10 detik
-  setInterval(loadCandles, 60000);   // refresh candle tiap 60 detik
-  setInterval(loadCalendar, 300000); // kalender ekonomi tiap 5 menit
-  setInterval(loadNews, 600000);     // berita tiap 10 menit
+  setInterval(loadTickers, 5000);
+  setInterval(loadCandles, 30000);
+  setInterval(loadCalendar, 60000);
+  setInterval(loadNews, 120000);
 }
 
 init();
