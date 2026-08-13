@@ -1,0 +1,18 @@
+# Cloudflare Tunnel configuration (cloudflared)
+# Lokasi file: C:\Users\Administrator\.cloudflared\config.yml
+#
+# CARA PAKAI:
+# 1. Ganti "trading-dashboard" dengan nama tunnel Anda (harus sama dengan
+#    hasil perintah "cloudflared tunnel create trading-dashboard")
+# 2. Ganti "dashboard.domainanda.com" dengan subdomain/domain Anda
+# 3. Pastikan domain sudah terdaftar di akun Cloudflare Anda
+
+tunnel: trading-dashboard
+credentials-file: C:\Users\Administrator\.cloudflared\trading-dashboard.json
+
+ingress:
+  # Semua request masuk diteruskan ke aplikasi di VPS
+  - hostname: dashboard.domainanda.com
+    service: http://localhost:8080
+  # Aturan default: tolak selain hostname di atas
+  - service: http_status:404
