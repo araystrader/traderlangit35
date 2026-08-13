@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trading Dashboard — Forex · Crypto · Emas</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">◈</div>
+    <div class="brand-text">
+      <h1>Trading Dashboard</h1>
+      <span>Forex · Crypto · Emas — Realtime</span>
+    </div>
+  </div>
+  <div class="clocks">
+    <div class="clock-wib">
+      <span class="cl-label">WIB (GMT+7)</span>
+      <span class="cl-time" id="clockWIB">--:--:--</span>
+    </div>
+    <div class="session" id="sessionBadge">…</div>
+  </div>
+  <div class="alert-ctl" id="alertCtl">
+    <button id="soundToggle" class="ac-btn on" title="Alert suara">🔊</button>
+    <button id="notifToggle" class="ac-btn" title="Notifikasi browser">🔔</button>
+    <span class="ac-badge" id="alertCount">0</span>
+  </div>
+  <div class="status" id="connStatus"><span class="dot"></span> menghubungkan…</div>
+</header>
+
+<!-- Price tickers -->
+<div class="ticker-strip" id="tickerStrip"></div>
+
+<main class="layout">
+  <!-- LEFT: instruments -->
+  <aside class="sidebar">
+    <div class="side-section">
+      <h3>Forex</h3>
+      <div id="forexList" class="sym-list"></div>
+    </div>
+    <div class="side-section">
+      <h3>Crypto</h3>
+      <div id="cryptoList" class="sym-list"></div>
+    </div>
+    <div class="side-section">
+      <h3>Emas / Gold</h3>
+      <div id="goldList" class="sym-list"></div>
+    </div>
+  </aside>
+
+  <!-- CENTER: chart + signals -->
+  <section class="center">
+    <div class="chart-head">
+      <div class="chart-title">
+        <h2 id="chartSymbol">EUR/USD</h2>
+        <span class="price-big" id="chartPrice">—</span>
+        <span class="chg" id="chartChange">—</span>
+      </div>
+      <div class="tf-switch" id="tfSwitch"></div>
+    </div>
+    <div class="chart-wrap" id="chartWrap"></div>
+
+    <!-- Strategy tabs -->
+    <div class="tabs" id="strategyTabs"></div>
+    <div class="strategy-panels" id="strategyPanels"></div>
+  </section>
+
+  <!-- RIGHT: fundamental / news -->
+  <aside class="rightbar">
+    <section class="news-panel">
+      <h3>Sinyal Terbaru <span class="hint">alert</span></h3>
+      <div id="alertLog" class="alert-log">belum ada sinyal</div>
+    </section>
+    <section class="news-panel">
+      <h3>Kalender Ekonomi <span class="hint">(countdown WIB)</span></h3>
+      <div class="impact-legend">
+        <span><i class="ic high"></i>Tinggi</span>
+        <span><i class="ic med"></i>Sedang</span>
+        <span><i class="ic low"></i>Rendah</span>
+      </div>
+      <div id="nextEvent" class="next-event">memuat…</div>
+      <div id="calendarList" class="calendar-list"></div>
+    </section>
+    <section class="news-panel">
+      <h3>Berita Realtime</h3>
+      <div id="newsList" class="news-list">memuat…</div>
+    </section>
+  </aside>
+</main>
+
+<!-- Mobile bottom navigation (visible only on small screens) -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mn-btn active" data-view="chart"><span class="mn-ic">📈</span><span>Chart</span></button>
+  <button class="mn-btn" data-view="symbols"><span class="mn-ic">📋</span><span>Simbol</span></button>
+  <button class="mn-btn" data-view="info"><span class="mn-ic">📰</span><span>Info</span></button>
+</nav>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="lib/lightweight-charts.standalone.production.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
